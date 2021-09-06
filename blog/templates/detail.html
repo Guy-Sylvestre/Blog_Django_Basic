@@ -1,0 +1,38 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block title %}Detail du Blog{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <h1  class="text-center">Détail des articles</h1>
+        <div class="row">
+            <div class="col-md-8">
+                <img src="{{article.image.url}}" alt="" style="max-width: 600px;">
+                <h1 class="title">{{article.title}}</h1>
+                <p class="desc">{{article.desc}}</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Les articles en relations</h3>
+                    <div class="row">
+                        {% for ralationArticle in aer %}
+                            {% if ralationArticle.id != article.id %}
+                                <div class="col-md-7 mb-1">
+                                    {% if ralationArticle.image != "http://default" %}
+                                        <a href="{% url 'detail' ralationArticle.id %}"><img src="{{ralationArticle.image.url}}" alt="" style="max-width: 180px;"></a>
+                                    {% else %}
+                                        <a href="{% url 'detail' ralationArticle.id %}"><img src="https://picsum.photos/200/300" alt="" style="width: 180px; max-height: 130px;"></a>
+                                    {% endif %}
+                                </div>
+                            
+                                <div class="col-md-5">
+                                    <a href="{% url 'detail' ralationArticle.id %}"><strong>{{ralationArticle.title}}</strong></a> <br>
+                                    {{ralationArticle.desc|truncatewords:3}}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block title %}Creation de compte{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger"><strong>{{message}}</strong></div>
+            {% endfor %}
+            {% endif %}
+            <form action="" method="POST" novalidate>
+                {% csrf_token %}
+                <div class="card">
+                    <div class="card-header text-center">
+                        <i class="fas fa-user-lock">Creation de compte</i>
+                        <div class="card-body">
+                            {{form}}
+                        </div>
+                        <div class=""><button class="btn btn-primary btn-sm-block">Inscription</button></div>
+
+                        <p class="mt-2">Vous avez deja un compte <a href="{% url 'login-blog' %}">connectez-vous</a> maintenant!</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+
+{% endblock %}

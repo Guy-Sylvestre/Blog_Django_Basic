@@ -1,0 +1,46 @@
+{% load static %}
+
+
+<!--Navbar-->
+<nav class="navbar navbar-expand-md text-center navbar-ligth mb-5">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="{% url 'home' %}">Mon blog</a>
+  
+    <!-- Collapse button -->
+    <button class="navbar-toggler bg-primary" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon bg-primary"></span>
+    </button>
+  
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+  
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'dashbord' %}">Admin
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+  
+      </ul>
+      <!-- Links -->
+      <!-- Verifier si l'utilisateur est connecter ou pas -->
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="btn btn-danger">Deconnexion</a>
+      {% else %}
+        <a href="{% url 'login-blog' %}" class="btn btn-primary">Connexion</a>
+      {% endif %}
+      
+      
+      <form class="form-inline" action="{% url 'search' %}">
+        <div class="md-form my-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Recherche" aria-label="Search" name="article">
+        </div>
+      </form>
+    </div>
+    <!-- Collapsible content -->
+  
+  </nav>
+  <!--/.Navbar-->

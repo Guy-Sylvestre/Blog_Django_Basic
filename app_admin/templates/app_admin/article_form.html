@@ -1,0 +1,20 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {{form}}
+                        <button class="btn btn-success mt-3 btn-block btn-sm">Modifier l'article</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

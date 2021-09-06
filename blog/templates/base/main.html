@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <!--HAED-->
+  {% include 'base/layouts/head.html' %}
+  <title>{% block title %}{% endblock %}</title>
+  <body>
+
+	<!--NAVBAR-->
+    {% include 'base/layouts/navbar.html' %}
+	<!--CONTENT-->
+    {% block content %}
+
+    {% endblock content %}
+    
+    <!--FOOTER-->
+    {% include 'base/layouts/footer.html' %}
+
+    <!--JAVASCRIPT-->
+    
+    {% include 'base/layouts/script.html' %}
+    {% block scripts %}
+      <!--{% include 'base/layouts/script.html' %} -->
+    {% endblock %}
+  </body>
+</html>

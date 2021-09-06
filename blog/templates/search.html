@@ -1,0 +1,37 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block title %}Recherche d'article{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2>Liste de recherche </h2>
+    <div class="row">
+        {% for article in liste_article %}
+        <div class="col-12 my-3 col-md-6 col-lg-3">
+            <div class="card">
+                
+                {% if article.image == "http://default" %}
+                
+                <a href="{% url 'detail' article.id %}"><img src="{% static 'img/blogger-logo.jpg' %}" class="card-img-top" alt="..." style="height: 230px;"/></a>
+                
+                {% else %}
+                <a href="{% url 'detail' article.id %}"><img src="{{ article.image.url }}" class="card-img-top" alt="..." style="height: 230px;"/></a>
+                
+                {% endif %}
+                    
+                <div class="card-body" style="height: 250px;">
+                    <h5 class="card-title"><a href="{% url 'detail' article.id %}">{{article.title}}</a></h5>
+                    <!--Troncarter les mots #truncatewords:nombre de motes-->
+                    <p class="card-text">{{article.desc|truncatewords:8}}</p>
+                    <!--Ajoute de filtre #timesince-->
+                    <p class="card-text">Publié  il y a {{article.created_at|timesince}}</p>
+                    <a href="{% url 'detail' article.id %}" class="btn btn-outline-primary">Lire la suite</a>
+                </div>
+                </div>
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

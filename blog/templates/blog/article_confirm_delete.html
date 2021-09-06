@@ -1,0 +1,24 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block title %}Supression d'article{% endblock %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="card">
+                    <div class="card-body">
+                        <p>Vouez vous supprimer cet article ({{object}})?</p>
+                        <input type="submit" value="Suprimer" class="btn btn-danger btn-sm">
+                        <a href="{% url 'mes_articles' %}" class="btn bn-secondary btn-sm">Non</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
